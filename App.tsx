@@ -1,20 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import { NativeBaseProvider, Box } from "native-base";
-import { StyleSheet, Text, View } from 'react-native';
+import { NativeBaseProvider, VStack, HStack, Button, IconButton, Icon, Text, Center, Box, StatusBar, extendTheme, useColorMode } from "native-base";
+import { MaterialIcons } from "@expo/vector-icons";
+import { StyleSheet, View } from 'react-native';
+import { BodyTypography } from "./src/components/typography";
+import { Main } from "./src/Main";
+import { RNTesterThemeContext, themes } from "./src/theme/theme";
 
 export default function App() {
   return (
     <NativeBaseProvider>
-      <Box>Hello world</Box>
+      <Main />
     </NativeBaseProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
