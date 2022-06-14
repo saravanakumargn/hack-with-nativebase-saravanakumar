@@ -7,14 +7,6 @@ export interface TextProps extends ITextProps {
   isSecondaryText?: boolean;
 }
 
-/**
- *
- *```tsx
- *   import {Text} from '../../components/typography';
- *
- *   <Text>Text</Text>
- * ```
- */
 export const Text: FC<TextProps> = ({
   children,
   isSecondaryText = false,

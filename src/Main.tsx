@@ -14,8 +14,10 @@ import {
   Switch,
 } from "native-base";
 import { Layout } from "./layout";
-import { ViewContainer } from "./components/view";
+import { GroupedView, ViewContainer } from "./components/view";
 import { RNTesterThemeContext, themes } from "./theme/theme";
+import { SettingsScreen } from "./screens";
+import { SideBar } from "./screens/components/SideBar";
 
 export const Main: FC = () => {
     const { colorMode } = useColorMode();
@@ -27,20 +29,25 @@ export const Main: FC = () => {
         <VStack
           space={{ base: "6", md: "4" }}
           //   flex={{ base: "6", md: 1 }}
-          p="4"
-          bg="green.500"
+        //   p="4"
+        //   bg="green.500"
         >
-          <ViewContainer p="16">
+            <SideBar />
+          {/* <ViewContainer p="16">
 
           <ToggleDarkMode />
             <Text>Hello</Text>
-          </ViewContainer>
+          </ViewContainer> */}
         </VStack>
 
         <ViewContainer flex={{ base: 1, md: 3 }} bg="blueGray.50">
-          <ViewContainer>
+            <SettingsScreen />
+          {/* <ViewContainer isSecondaryBackground>
+              <GroupedView headerLabel="Settings"
+              headerIconName="arrow-back">
             <Text>Hello11</Text>
-          </ViewContainer>
+            </GroupedView>
+          </ViewContainer> */}
         </ViewContainer>
       </Stack>
     </Layout>

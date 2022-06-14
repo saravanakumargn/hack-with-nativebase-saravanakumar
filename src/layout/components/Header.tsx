@@ -7,7 +7,7 @@ import { ViewContainer } from "../../components/view";
 
 export const Header: FC = () => {
   return (
-    <ViewContainer>
+    <ViewContainer flex={"none"}>
     <HStack px="1" py="3" justifyContent="space-between" alignItems="center" w="100%">
         <HStack alignItems="center">
           <IconButton icon={<Icon name="menu" />} />

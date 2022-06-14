@@ -13,8 +13,13 @@ export const ViewContainer: FC<ViewContainerProps> = ({
   ...props
 }) => {
   const theme = useContext(RNTesterThemeContext);
+
+  const backgroundColor = useMemo(() => (
+    isSecondaryBackground ? theme.SecondarySystemBackgroundColor : theme.SystemBackgroundColor
+  ), [isSecondaryBackground, theme]);
+
   return (
-    <Box width="100%" bg={theme.SystemBackgroundColor}
+    <Box bg={backgroundColor} flex={1}
      {...props}>
       {children}
     </Box>
