@@ -9,48 +9,79 @@ import {
   Center,
   Box,
   StatusBar,
-  Stack,
   useColorMode,
   Switch,
+  Hidden,
 } from "native-base";
 import { Layout } from "./layout";
 import { GroupedView, ViewContainer } from "./components/view";
 import { RNTesterThemeContext, themes } from "./theme/theme";
-import { SettingsScreen } from "./screens";
+import { SettingsScreen, TrackOrderScreen } from "./screens";
 import { SideBar } from "./screens/components/SideBar";
+import { Button, View } from "react-native";
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { StackViewEnum } from "./types";
+
+function HomeScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Home Screen</Text>
+      <Button
+        title="Go to Details"
+        onPress={() => navigation.navigate('Details')}
+      />
+    </View>
+  );
+}
+function DetailsScreen() {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Settings Screen</Text>
+    </View>
+  );
+}
+
+const Stack = createNativeStackNavigator();
+const stackOptions = {
+  headerShown: false,
+}
 
 export const Main: FC = () => {
     const { colorMode } = useColorMode();
   
   return (
     <RNTesterThemeContext.Provider value={colorMode === 'dark' ? themes.dark : themes.light}>
-    <Layout>
+    
+    <Stack.Navigator>
+        <Stack.Screen name={StackViewEnum.Settings}
+         component={SettingsScreen}
+         options={stackOptions} />
+        <Stack.Screen name={StackViewEnum.TrackOrder}
+        component={TrackOrderScreen}
+         options={stackOptions} />
+      </Stack.Navigator>
+      
+      {/* <Layout>
       <Stack w="100%" h="100%" direction={{ base: "column", md: "row" }}>
+      <Hidden from="sm" till="lg">
         <VStack
           space={{ base: "6", md: "4" }}
+          flex={{ base: "none", md: 1 }}
           //   flex={{ base: "6", md: 1 }}
         //   p="4"
         //   bg="green.500"
         >
             <SideBar />
-          {/* <ViewContainer p="16">
-
-          <ToggleDarkMode />
-            <Text>Hello</Text>
-          </ViewContainer> */}
         </VStack>
-
+        </Hidden>
+        <Box flex={{ base: 1, md: 3 }} bg="blueGray.50">
         <ViewContainer flex={{ base: 1, md: 3 }} bg="blueGray.50">
             <SettingsScreen />
-          {/* <ViewContainer isSecondaryBackground>
-              <GroupedView headerLabel="Settings"
-              headerIconName="arrow-back">
-            <Text>Hello11</Text>
-            </GroupedView>
-          </ViewContainer> */}
         </ViewContainer>
+        </Box>
       </Stack>
-    </Layout>
+    </Layout> */}
+
     </RNTesterThemeContext.Provider>
   );
 };

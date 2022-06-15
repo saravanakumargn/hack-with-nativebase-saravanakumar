@@ -29,10 +29,6 @@ export const GroupedView: FC<GroupedViewProps> = ({
 }) => {
   const theme = useContext(RNTesterThemeContext);
 
-//   const backgroundColor = useMemo(() => (
-//     isSecondaryBackground ? theme.SecondarySystemBackgroundColor : theme.SystemBackgroundColor
-//   ), [isSecondaryBackground, theme]);
-
   return (
       <Box>
       {(!!headerIconName || !!headerLabel) && (
