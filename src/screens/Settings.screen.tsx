@@ -95,9 +95,8 @@ export const SettingsScreen: FC = () => {
 
 const SettingsItem: FC<SettingsItem> = memo(
   ({ icon, iconName, label, onPress }) => {
-    const navigation = useNavigation();
     return (
-      <HStack onPress={onPress} my={4}>
+      <HStack my={4}>
         {icon}
         {!!iconName && <Icon name={iconName} isSecondaryColor />}
         <BodyTypography pl={3}>{label}</BodyTypography>

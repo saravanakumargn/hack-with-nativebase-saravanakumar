@@ -1,35 +1,6 @@
 import {createContext} from 'react';
 import {Appearance, ColorValue} from 'react-native';
 
-export type RNTesterTheme = {
-  LabelColor: ColorValue;
-  SecondaryLabelColor: ColorValue;
-  TertiaryLabelColor: ColorValue;
-  QuaternaryLabelColor: ColorValue;
-  PlaceholderTextColor: ColorValue;
-  SystemBackgroundColor: ColorValue;
-  SecondarySystemBackgroundColor: ColorValue;
-  TertiarySystemBackgroundColor: ColorValue;
-  GroupedBackgroundColor: ColorValue;
-  SecondaryGroupedBackgroundColor: ColorValue;
-  TertiaryGroupedBackgroundColor: ColorValue;
-  SystemFillColor: ColorValue;
-  SecondarySystemFillColor: ColorValue;
-  TertiarySystemFillColor: ColorValue;
-  QuaternarySystemFillColor: ColorValue;
-  SeparatorColor: ColorValue;
-  OpaqueSeparatorColor: ColorValue;
-  LinkColor: ColorValue;
-  SystemPurpleColor: ColorValue;
-  SystemOrangeColor: ColorValue;
-  SystemRedColor: ColorValue;
-  SystemGreenColor: ColorValue;
-  ToolbarColor: ColorValue;
-  BackgroundColor: ColorValue;
-  BorderColor: ColorValue;
-  SystemTealColor: ColorValue;
-};
-
 export const RNTesterLightTheme = {
   LabelColor                      : '#000000ff',
   SecondaryLabelColor             : '#3c3c4399',
