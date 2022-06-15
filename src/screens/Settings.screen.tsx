@@ -1,11 +1,12 @@
 import { useNavigation } from "@react-navigation/native";
-import { Box, Center, HStack, ScrollView } from "native-base";
+import { Box, Button, Center, HStack, Progress, ScrollView } from "native-base";
 import { MaterialCommunityIcons, Foundation } from "@expo/vector-icons";
 import React, { FC, memo, ReactElement, useMemo } from "react";
 import { Icon } from "../components/icon";
-import { Text } from "../components/typography";
+import { BodyTypography, Text } from "../components/typography";
 import { GroupedView, ViewContainer } from "../components/view";
 import { Layout } from "../layout";
+import { Card } from "../components/card";
 
 type SettingsItem = {
   label: string;
@@ -36,28 +37,27 @@ export const SettingsScreen: FC = () => {
               />
             }
           />
-          <SettingsItem label="General"
-            icon={
-              <Icon
-                name="shield"
-                as={Foundation}
-                isSecondaryColor
-              />
-            } />
-          <SettingsItem label="Manage Accounts"
+          <SettingsItem
+            label="General"
+            icon={<Icon name="shield" as={Foundation} isSecondaryColor />}
+          />
+          <SettingsItem
+            label="Manage Accounts"
             icon={
               <Icon
                 name="account-cog"
                 as={MaterialCommunityIcons}
                 isSecondaryColor
               />
-            } />
+            }
+          />
           <HStack justifyContent="space-between" alignItems={"center"}>
             <SettingsItem label="Language" iconName="language" />
             <Text>English</Text>
           </HStack>
           <SettingsItem label="Linked Accounts" iconName="link-outline" />
-          <SettingsItem label="Disable Accounts"
+          <SettingsItem
+            label="Disable Accounts"
             icon={
               <Icon
                 name="account-off"
@@ -67,6 +67,27 @@ export const SettingsScreen: FC = () => {
             }
           />
         </GroupedView>
+
+        <Card mx={8}>
+          <HStack justifyContent="space-between"
+            alignItems={"center"}
+            space={6}
+          >
+            <Box flex={1}>
+              <HStack mb={3}>
+                <Icon name="cloud-outline" isSecondaryColor />
+                <BodyTypography pl={3}>Storage</BodyTypography>
+              </HStack>
+              <Box flex={1}>
+                <Progress value={45} />
+              </Box>
+              <BodyTypography fontSize="sm" mt={3}>
+                4 GB of 15 GB used
+              </BodyTypography>
+            </Box>
+            <Button variant={"outline"}>Click Me</Button>
+          </HStack>
+        </Card>
       </ViewContainer>
     </Layout>
   );
@@ -79,9 +100,7 @@ const SettingsItem: FC<SettingsItem> = memo(
       <HStack onPress={onPress} my={4}>
         {icon}
         {!!iconName && <Icon name={iconName} isSecondaryColor />}
-        <Text fontSize={"lg"} pl={3}>
-          {label}
-        </Text>
+        <BodyTypography pl={3}>{label}</BodyTypography>
       </HStack>
     );
   }

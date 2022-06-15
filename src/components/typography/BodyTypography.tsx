@@ -11,7 +11,7 @@ export const BodyTypography: FC<BodyTypographyProps> = ({
 }) => {
 
   return (
-    <Text fontSize={'md'}
+    <Text fontSize={"lg"}
      {...props}>
       {children}
     </Text>

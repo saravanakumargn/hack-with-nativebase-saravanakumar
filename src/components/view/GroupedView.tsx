@@ -14,7 +14,6 @@ export interface GroupedViewProps extends IBoxProps {
   onClickHeader?: () => void;
   isSecondaryBackground?: boolean;
   isPadding?: boolean;
-  isMargin?: boolean;
 }
 
 export const GroupedView: FC<GroupedViewProps> = ({
@@ -24,7 +23,6 @@ export const GroupedView: FC<GroupedViewProps> = ({
   onClickHeader,
   isSecondaryBackground = false,
   isPadding = true,
-  isMargin = true,
   ...props
 }) => {
   const theme = useContext(RNTesterThemeContext);
@@ -32,7 +30,7 @@ export const GroupedView: FC<GroupedViewProps> = ({
   return (
       <Box>
       {(!!headerIconName || !!headerLabel) && (
-      <HStack alignItems="center" mx={4} mt={4}>
+      <HStack alignItems="center" mx={8} mt={8}>
       {!!headerIconName && (
         <IconButton iconName={headerIconName}
         onPress={onClickHeader}/>
@@ -46,7 +44,8 @@ export const GroupedView: FC<GroupedViewProps> = ({
       )}
     <Box bg={theme.SystemBackgroundColor}
     p={isPadding ? 4 : 0}
-    m={isMargin ? 4 : 0}
+    mx={8}
+    my={4}
     borderRadius={BORDER_RADIUS}
      {...props}>
       {children}
