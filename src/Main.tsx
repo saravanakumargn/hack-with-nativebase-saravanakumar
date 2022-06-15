@@ -52,7 +52,7 @@ export const Main: FC = () => {
   return (
     <RNTesterThemeContext.Provider value={colorMode === 'dark' ? themes.dark : themes.light}>
     
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName={StackViewEnum.TrackOrder}>
         <Stack.Screen name={StackViewEnum.Settings}
          component={SettingsScreen}
          options={stackOptions} />

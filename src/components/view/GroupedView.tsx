@@ -28,7 +28,7 @@ export const GroupedView: FC<GroupedViewProps> = ({
   const theme = useContext(RNTesterThemeContext);
 
   return (
-      <Box>
+      <>
       {(!!headerIconName || !!headerLabel) && (
       <HStack alignItems="center" mx={8} mt={8}>
       {!!headerIconName && (
@@ -50,7 +50,7 @@ export const GroupedView: FC<GroupedViewProps> = ({
      {...props}>
       {children}
     </Box>
-    </Box>
+    </>
   );
 };
 

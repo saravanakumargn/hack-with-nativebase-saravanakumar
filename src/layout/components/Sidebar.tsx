@@ -113,7 +113,7 @@ export const Sidebar: FC = () => {
         </VStack>
         </VStack>
         </Flex>
-        {/* <ToggleDarkMode /> */}
+        <ToggleDarkMode />
         {/* <Text>Hello</Text>
         <Button
           title="Go to TrackOrder"
