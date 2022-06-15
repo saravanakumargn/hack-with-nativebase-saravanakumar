@@ -81,10 +81,10 @@ export const Sidebar: FC = () => {
         <SidebarListItem label="Contacts" iconName="person" />
         <SidebarListItem label="Groups" iconName="groups"/>
         <SidebarListItem label="Notification" iconName="notifications" />
-        <SidebarListItem label="Order" iconName="shopping-bag"
+        <SidebarListItem label="Order (screen3)" iconName="shopping-bag"
         isSelected={route.name === StackViewEnum.TrackOrder}
         onPress={() => navigation.navigate(StackViewEnum.TrackOrder)} />
-        <SidebarListItem label="Settings" iconName="settings"
+        <SidebarListItem label="Settings (screen1)" iconName="settings"
         isSelected={route.name === StackViewEnum.Settings}
         onPress={() => navigation.navigate(StackViewEnum.Settings)} />
         <SidebarListItem label="Privacy Policies" iconName="privacy-tip" />
@@ -121,20 +121,20 @@ function ToggleDarkMode() {
 
 const SidebarListItem: FC<SidebarListItem> = memo(
   ({ icon, iconName, label, onPress, isSelected }) => {
-    const {colors} = useTheme();
+    const theme = useContext(RNTesterThemeContext);
     const bgColor = useMemo(() => {
       if (isSelected) {
-        return colors['primary'];
+        return theme.SecondarySystemBackgroundColor;
       }
       return "transparent";
     }
-    , [isSelected]);
+    , [theme, isSelected]);
 
     const selectedColor = useMemo(() => {
       if (!isSelected) {
         return null;
       }
-      return "white";
+      return "violet.600";
     }
     , [isSelected]);
 

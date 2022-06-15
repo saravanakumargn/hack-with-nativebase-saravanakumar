@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import { Box, Button, Center, HStack, Progress, ScrollView } from "native-base";
+import { Box, Button, Center, HStack, Progress, ScrollView, useColorMode, useColorModeValue } from "native-base";
 import { MaterialCommunityIcons, Foundation } from "@expo/vector-icons";
 import React, { FC, memo, ReactElement, useMemo } from "react";
 import { Icon } from "../components/icon";
@@ -17,6 +17,7 @@ type SettingsItem = {
 
 export const SettingsScreen: FC = () => {
   const navigation = useNavigation();
+  const {colorMode} = useColorMode();
   return (
     <Layout>
       <ViewContainer isSecondaryBackground>
@@ -85,7 +86,11 @@ export const SettingsScreen: FC = () => {
                 4 GB of 15 GB used
               </BodyTypography>
             </Box>
-            <Button variant={"outline"}>Click Me</Button>
+            <Button variant={"outline"}
+            borderColor={useColorModeValue("violet.600", "gray.600")}
+            _text={{
+              color: useColorModeValue("violet.600", "gray.600"),
+            }}>Buy Storage</Button>
           </HStack>
         </Card>
       </ViewContainer>
