@@ -15,11 +15,13 @@ import {
   useTheme,
   ScrollView,
   Pressable,
+  Spacer,
+  Flex,
 } from "native-base";
 import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Icon } from "../../components/icon";
 import { ViewContainer } from "../../components/view";
-import { Button } from "react-native";
+import { Button, View } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { StackViewEnum } from "../../types";
 import { BodyTypography } from "../../components/typography";
@@ -46,8 +48,11 @@ export const Sidebar: FC = () => {
       borderRightWidth={0.5}
       borderTopWidth={0.5}
     >
-      <ScrollView showsHorizontalScrollIndicator={false}>
-        <VStack
+      <ScrollView showsHorizontalScrollIndicator={false} style={{
+          flex: 1,
+          flexGrow:1,
+        }}>
+         <VStack
           px="1"
           pt="12"
           pb="8"
@@ -75,7 +80,14 @@ export const Sidebar: FC = () => {
             janedoe2@mydomain.com
           </BodyTypography>
         </VStack>
+
         <Divider />
+        <Flex>
+        {/* <View
+           style={{
+            flex: 1,
+            backgroundColor: '#ff00ff'
+          }}> */}
         <VStack px="6"
           py="8">
         <SidebarListItem label="Contacts" iconName="person" />
@@ -91,8 +103,18 @@ export const Sidebar: FC = () => {
         <SidebarListItem label="Help and Support" iconName="support-agent" />
         <SidebarListItem label="Refer and Earn" iconName="share" />
         </VStack>
-        <ToggleDarkMode />
-        <Text>Hello</Text>
+        
+        {/* <Spacer /> */}
+        <VStack>
+        <Divider />
+        <VStack px="6"
+          py="8">
+        <SidebarListItem label="Logout" iconName="logout" />
+        </VStack>
+        </VStack>
+        </Flex>
+        {/* <ToggleDarkMode /> */}
+        {/* <Text>Hello</Text>
         <Button
           title="Go to TrackOrder"
           onPress={() => navigation.navigate(StackViewEnum.TrackOrder)}
@@ -100,7 +122,7 @@ export const Sidebar: FC = () => {
         <Button
           title="Go to Settings"
           onPress={() => navigation.navigate(StackViewEnum.Settings)}
-        />
+        /> */}
       </ScrollView>
     </ViewContainer>
   );
