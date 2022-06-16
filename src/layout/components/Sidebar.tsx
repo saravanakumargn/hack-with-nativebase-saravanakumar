@@ -86,7 +86,9 @@ export const Sidebar: FC = () => {
           py="8">
         <SidebarListItem label="Contacts" iconName="person" />
         <SidebarListItem label="Groups" iconName="groups"/>
-        <SidebarListItem label="Notification" iconName="notifications" />
+        <SidebarListItem label="My Cart (screen-5)" iconName="notifications"
+        isSelected={route.name === StackViewEnum.MyCart}
+        onPress={() => navigation.navigate(StackViewEnum.MyCart)} />
         <SidebarListItem label="Order (screen-3)" iconName="shopping-bag"
         isSelected={route.name === StackViewEnum.TrackOrder}
         onPress={() => navigation.navigate(StackViewEnum.TrackOrder)} />

@@ -21,6 +21,7 @@ import { SideBar } from "./screens/components/SideBar";
 import { Button, View } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StackViewEnum } from "./types";
+import { MyCartScreen } from "./screens/MyCart.screen";
 
 const Stack = createNativeStackNavigator();
 const stackOptions = {
@@ -34,7 +35,7 @@ export const Main: FC = () => {
     <AppThemeContext.Provider
       value={colorMode === "dark" ? themes.dark : themes.light}
     >
-      <Stack.Navigator initialRouteName={StackViewEnum.Settings}>
+      <Stack.Navigator initialRouteName={StackViewEnum.MyCart}>
         <Stack.Screen
           name={StackViewEnum.Settings}
           component={SettingsScreen}
@@ -43,6 +44,11 @@ export const Main: FC = () => {
         <Stack.Screen
           name={StackViewEnum.TrackOrder}
           component={TrackOrderScreen}
+          options={stackOptions}
+        />
+        <Stack.Screen
+          name={StackViewEnum.MyCart}
+          component={MyCartScreen}
           options={stackOptions}
         />
       </Stack.Navigator>
