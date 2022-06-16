@@ -12,12 +12,12 @@ export const Text: FC<TextProps> = ({
   isSecondaryText = false,
   ...props
 }) => {
-    const theme = useContext(AppThemeContext);
+  const theme = useContext(AppThemeContext);
 
-    const textColor = useMemo(() => (
-        isSecondaryText ? theme.SecondaryLabelColor : theme.LabelColor
-    ), [isSecondaryText, theme]);
-        
+  const textColor = useMemo(
+    () => (isSecondaryText ? theme.SecondaryLabelColor : theme.LabelColor),
+    [isSecondaryText, theme]
+  );
 
   return (
     <NBText color={textColor} {...props}>

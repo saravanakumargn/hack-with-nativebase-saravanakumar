@@ -1,9 +1,9 @@
 import { useNavigation } from "@react-navigation/native";
-import { Box, Button, Center, HStack, Progress, ScrollView, useColorMode, useColorModeValue } from "native-base";
+import { Box, Button, HStack, Progress, useColorMode, useColorModeValue } from "native-base";
 import { MaterialCommunityIcons, Foundation } from "@expo/vector-icons";
-import React, { FC, memo, ReactElement, useMemo } from "react";
+import React, { FC, memo, ReactElement } from "react";
 import { Icon } from "../components/icon";
-import { BodyTypography, Text } from "../components/typography";
+import { BodyTypography } from "../components/typography";
 import { GroupedView, ViewContainer } from "../components/view";
 import { Layout } from "../layout";
 import { Card } from "../components/card";

@@ -7,25 +7,18 @@ import {
   HStack,
   Image,
   Modal,
-  Progress,
   Radio,
-  ScrollView,
   Spacer,
-  useColorMode,
   useColorModeValue,
   VStack,
 } from "native-base";
-import { MaterialCommunityIcons, Foundation } from "@expo/vector-icons";
 import React, {
   FC,
   memo,
-  ReactElement,
   useCallback,
-  useMemo,
   useState,
 } from "react";
-import { Icon } from "../components/icon";
-import { BodyTypography, Text } from "../components/typography";
+import { BodyTypography } from "../components/typography";
 import { GroupedView, ViewContainer } from "../components/view";
 import { Layout } from "../layout";
 import { Card } from "../components/card";

@@ -1,4 +1,4 @@
-import React, { FC, memo, useMemo } from "react";
+import React, { FC, memo } from "react";
 import Text, { TextProps } from "./Text";
 
 export interface BodyTypographyProps extends TextProps {
@@ -9,10 +9,8 @@ export const BodyTypography: FC<BodyTypographyProps> = ({
   children,
   ...props
 }) => {
-
   return (
-    <Text fontSize={"lg"}
-     {...props}>
+    <Text fontSize={"lg"} {...props}>
       {children}
     </Text>
   );

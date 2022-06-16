@@ -14,13 +14,16 @@ export const ViewContainer: FC<ViewContainerProps> = ({
 }) => {
   const theme = useContext(AppThemeContext);
 
-  const backgroundColor = useMemo(() => (
-    isSecondaryBackground ? theme.SecondarySystemBackgroundColor : theme.SystemBackgroundColor
-  ), [isSecondaryBackground, theme]);
+  const backgroundColor = useMemo(
+    () =>
+      isSecondaryBackground
+        ? theme.SecondarySystemBackgroundColor
+        : theme.SystemBackgroundColor,
+    [isSecondaryBackground, theme]
+  );
 
   return (
-    <Box bg={backgroundColor} flex={1}
-     {...props}>
+    <Box bg={backgroundColor} flex={1} {...props}>
       {children}
     </Box>
   );

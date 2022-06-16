@@ -6,11 +6,9 @@ import {
   IBoxProps,
   useColorModeValue,
 } from "native-base";
-import { AppThemeContext, DarkTheme } from "../../theme/theme";
+import { AppThemeContext, DarkTheme, LightTheme } from "../../theme/theme";
 import { BORDER_RADIUS } from "../../utils";
-import { View } from "react-native";
-import { Icon } from "../icon";
-import { BodyTypography, Text } from "../typography";
+import { Text } from "../typography";
 import { IconButton } from "../button";
 
 export interface GroupedViewProps extends IBoxProps {
@@ -49,7 +47,13 @@ export const GroupedView: FC<GroupedViewProps> = ({
             <IconButton
               iconName={headerIconName}
               _icon={{
-                color: ["lightText", "auto"],
+                color: [
+                  "lightText",
+                  useColorModeValue(
+                    LightTheme.LabelColor,
+                    DarkTheme.LabelColor
+                  ),
+                ],
                 size: "lg",
               }}
               onPress={onClickHeader}

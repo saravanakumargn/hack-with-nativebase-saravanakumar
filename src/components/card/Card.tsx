@@ -15,15 +15,21 @@ export const Card: FC<CardProps> = ({
 }) => {
   const theme = useContext(AppThemeContext);
 
-  const backgroundColor = useMemo(() => (
-    isSecondaryBackground ? theme.SecondaryGroupedBackgroundColor : theme.GroupedBackgroundColor
-  ), [isSecondaryBackground, theme]);
+  const backgroundColor = useMemo(
+    () =>
+      isSecondaryBackground
+        ? theme.SecondaryGroupedBackgroundColor
+        : theme.GroupedBackgroundColor,
+    [isSecondaryBackground, theme]
+  );
 
   return (
-    <Box bg={backgroundColor}  
-    p={[2, 4]}
-    borderRadius={BORDER_RADIUS}
-     {...props}>
+    <Box
+      bg={backgroundColor}
+      p={[2, 4]}
+      borderRadius={BORDER_RADIUS}
+      {...props}
+    >
       {children}
     </Box>
   );

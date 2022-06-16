@@ -1,9 +1,8 @@
 import { extendTheme, NativeBaseProvider } from "native-base";
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer } from "@react-navigation/native";
 import { Main } from "./src/Main";
 
 export default function App() {
-
   const theme = extendTheme({
     components: {
       Button: {
@@ -23,8 +22,7 @@ export default function App() {
       },
     },
     config: {
-      // Changing initialColorMode to 'dark'
-      initialColorMode: 'light',
+      initialColorMode: "light",
     },
   });
 
@@ -36,4 +34,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-

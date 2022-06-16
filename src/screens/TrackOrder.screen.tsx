@@ -1,21 +1,17 @@
 import { useNavigation } from "@react-navigation/native";
 import {
-  Badge,
   Box,
-  Center,
   Circle,
-  Divider,
   HStack,
   Image,
   Spacer,
   View,
   VStack,
 } from "native-base";
-import React, { FC, memo, ReactElement, useMemo } from "react";
-import { StyleSheet } from "react-native";
+import React, { FC, memo, useMemo } from "react";
 import { Card } from "../components/card";
 import { Icon } from "../components/icon";
-import { BodyTypography, Text } from "../components/typography";
+import { BodyTypography } from "../components/typography";
 import { GroupedView, ViewContainer } from "../components/view";
 import { Layout } from "../layout";
 import { BORDER_RADIUS } from "../utils";
