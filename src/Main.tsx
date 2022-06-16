@@ -35,7 +35,7 @@ export const Main: FC = () => {
     <AppThemeContext.Provider
       value={colorMode === "dark" ? themes.dark : themes.light}
     >
-      <Stack.Navigator initialRouteName={StackViewEnum.MyCart}>
+      <Stack.Navigator initialRouteName={StackViewEnum.Settings}>
         <Stack.Screen
           name={StackViewEnum.Settings}
           component={SettingsScreen}

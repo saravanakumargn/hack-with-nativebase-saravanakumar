@@ -14,7 +14,7 @@ export const Header: FC = () => {
          mx={2}>
           <IconButton iconName="menu" />
           <Heading>
-          <Text color="#6200ee">HackWith</Text>
+          <Text color="violet.800">HackWith</Text>
           NativeBase
         </Heading>
         </HStack>

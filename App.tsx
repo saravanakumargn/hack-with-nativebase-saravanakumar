@@ -11,6 +11,11 @@ export default function App() {
           colorScheme: "violet",
         },
       },
+      Radio: {
+        defaultProps: {
+          colorScheme: "violet",
+        },
+      },
       Progress: {
         defaultProps: {
           colorScheme: "violet",

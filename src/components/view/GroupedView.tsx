@@ -1,6 +1,12 @@
 import React, { FC, memo, ReactNode, useContext, useMemo } from "react";
-import { Box, Heading, HStack, IBoxProps } from "native-base";
-import { AppThemeContext } from "../../theme/theme";
+import {
+  Box,
+  Heading,
+  HStack,
+  IBoxProps,
+  useColorModeValue,
+} from "native-base";
+import { AppThemeContext, DarkTheme } from "../../theme/theme";
 import { BORDER_RADIUS } from "../../utils";
 import { View } from "react-native";
 import { Icon } from "../icon";
@@ -28,30 +34,44 @@ export const GroupedView: FC<GroupedViewProps> = ({
   const theme = useContext(AppThemeContext);
 
   return (
-      <>
+    <>
       {(!!headerIconName || !!headerLabel) && (
-      <HStack alignItems="center" 
-      mx={[0, 8]}
-       mt={8}>
-      {!!headerIconName && (
-        <IconButton iconName={headerIconName}
-        onPress={onClickHeader}/>
+        <HStack
+          alignItems="center"
+          bg={[
+            useColorModeValue("violet.800", DarkTheme.SystemBackgroundColor),
+            "transparent",
+          ]}
+          mx={[0, 8]}
+          pt={8}
+        >
+          {!!headerIconName && (
+            <IconButton
+              iconName={headerIconName}
+              _icon={{
+                color: ["lightText", "auto"],
+                size: "lg",
+              }}
+              onPress={onClickHeader}
+            />
+          )}
+          {!!headerLabel && (
+            <Heading size="md">
+              <Text color={["lightText", "auto"]}>{headerLabel}</Text>
+            </Heading>
+          )}
+        </HStack>
       )}
-      {!!headerLabel && (
-      <Heading size='md'>
-          <Text>{headerLabel}</Text>
-        </Heading>
-      )}
-      </HStack>
-      )}
-    <Box bg={theme.GroupedBackgroundColor}
-    p={isPadding ? 4 : 0}
-    mx={[0, 8]}
-    my={[0, 4]}
-    borderRadius={[0, BORDER_RADIUS]}
-     {...props}>
-      {children}
-    </Box>
+      <Box
+        bg={theme.GroupedBackgroundColor}
+        p={isPadding ? 4 : 0}
+        mx={[0, 8]}
+        my={[0, 4]}
+        borderRadius={[0, BORDER_RADIUS]}
+        {...props}
+      >
+        {children}
+      </Box>
     </>
   );
 };
