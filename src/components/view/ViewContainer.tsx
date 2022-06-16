@@ -1,6 +1,6 @@
 import React, { FC, memo, ReactNode, useContext, useMemo } from "react";
 import { Box, IBoxProps } from "native-base";
-import { RNTesterThemeContext } from "../../theme/theme";
+import { AppThemeContext } from "../../theme/theme";
 
 export interface ViewContainerProps extends IBoxProps {
   children: ReactNode;
@@ -12,7 +12,7 @@ export const ViewContainer: FC<ViewContainerProps> = ({
   isSecondaryBackground = false,
   ...props
 }) => {
-  const theme = useContext(RNTesterThemeContext);
+  const theme = useContext(AppThemeContext);
 
   const backgroundColor = useMemo(() => (
     isSecondaryBackground ? theme.SecondarySystemBackgroundColor : theme.SystemBackgroundColor

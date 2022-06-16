@@ -17,6 +17,10 @@ export default function App() {
         },
       },
     },
+    config: {
+      // Changing initialColorMode to 'dark'
+      initialColorMode: 'light',
+    },
   });
 
   return (

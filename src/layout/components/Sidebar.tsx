@@ -26,7 +26,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { StackViewEnum } from "../../types";
 import { BodyTypography } from "../../components/typography";
 import { IconButton } from "../../components/button";
-import { RNTesterThemeContext } from "../../theme/theme";
+import { AppThemeContext } from "../../theme/theme";
 import { BORDER_RADIUS } from "../../utils";
 
 type SidebarListItem = {
@@ -40,7 +40,7 @@ type SidebarListItem = {
 export const Sidebar: FC = () => {
   const navigation = useNavigation();
   const route = useRoute();
-  const theme = useContext(RNTesterThemeContext);
+  const theme = useContext(AppThemeContext);
   console.log(route.name)
   return (
     <ViewContainer
@@ -137,7 +137,7 @@ function ToggleDarkMode() {
 
 const SidebarListItem: FC<SidebarListItem> = memo(
   ({ icon, iconName, label, onPress, isSelected }) => {
-    const theme = useContext(RNTesterThemeContext);
+    const theme = useContext(AppThemeContext);
     const bgColor = useMemo(() => {
       if (isSelected) {
         return theme.SecondarySystemBackgroundColor;

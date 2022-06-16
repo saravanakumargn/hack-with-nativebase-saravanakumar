@@ -1,6 +1,6 @@
 import React, { FC, memo, useContext, useMemo } from "react";
 import { ITextProps, Text as NBText } from "native-base";
-import { RNTesterThemeContext } from "../../theme/theme";
+import { AppThemeContext } from "../../theme/theme";
 
 export interface TextProps extends ITextProps {
   children: string | JSX.Element;
@@ -12,7 +12,7 @@ export const Text: FC<TextProps> = ({
   isSecondaryText = false,
   ...props
 }) => {
-    const theme = useContext(RNTesterThemeContext);
+    const theme = useContext(AppThemeContext);
 
     const textColor = useMemo(() => (
         isSecondaryText ? theme.SecondaryLabelColor : theme.LabelColor

@@ -1,6 +1,6 @@
 import React, { FC, memo, ReactNode, useContext, useMemo } from "react";
 import { Box, Heading, HStack, IBoxProps } from "native-base";
-import { RNTesterThemeContext } from "../../theme/theme";
+import { AppThemeContext } from "../../theme/theme";
 import { BORDER_RADIUS } from "../../utils";
 import { View } from "react-native";
 import { Icon } from "../icon";
@@ -25,12 +25,14 @@ export const GroupedView: FC<GroupedViewProps> = ({
   isPadding = true,
   ...props
 }) => {
-  const theme = useContext(RNTesterThemeContext);
+  const theme = useContext(AppThemeContext);
 
   return (
       <>
       {(!!headerIconName || !!headerLabel) && (
-      <HStack alignItems="center" mx={8} mt={8}>
+      <HStack alignItems="center" 
+      mx={[0, 8]}
+       mt={8}>
       {!!headerIconName && (
         <IconButton iconName={headerIconName}
         onPress={onClickHeader}/>
@@ -42,7 +44,7 @@ export const GroupedView: FC<GroupedViewProps> = ({
       )}
       </HStack>
       )}
-    <Box bg={theme.SystemBackgroundColor}
+    <Box bg={theme.GroupedBackgroundColor}
     p={isPadding ? 4 : 0}
     mx={[0, 8]}
     my={[0, 4]}

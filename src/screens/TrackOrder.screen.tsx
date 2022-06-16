@@ -2,6 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 import {
   Badge,
   Box,
+  Center,
   Circle,
   Divider,
   HStack,
@@ -35,12 +36,14 @@ export const TrackOrderScreen: FC = () => {
         <GroupedView
           headerLabel="Track Order"
           headerIconName="arrow-back"
-          flex={1}
+          flexGrow={["unset", 1]}
           onClickHeader={function () {
             navigation.goBack();
           }}
         >
-          <Card isSecondaryBackground>
+          <Box alignItems={"center"}>
+            <VStack width={['95%', '80%']}>
+          <Card isSecondaryBackground mt={[2, 8]} mb={8}>
             <HStack>
               <Image
                 source={{
@@ -52,7 +55,7 @@ export const TrackOrderScreen: FC = () => {
               />
               <VStack ml={4}>
                 <BodyTypography fontSize={"md"}>Sweater dress</BodyTypography>
-                <BodyTypography isSecondaryText fontSize={"sm"} mt={1}>
+                <BodyTypography isSecondaryText fontSize={"sm"} mt={"0.5"}>
                   Girls self design
                 </BodyTypography>
                 <Spacer />
@@ -85,6 +88,8 @@ export const TrackOrderScreen: FC = () => {
             isCompleted={false}
             isLastItem
           />
+          </VStack>
+          </Box>
         </GroupedView>
       </ViewContainer>
     </Layout>

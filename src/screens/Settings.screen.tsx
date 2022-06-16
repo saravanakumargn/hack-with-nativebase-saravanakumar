@@ -54,7 +54,7 @@ export const SettingsScreen: FC = () => {
           />
           <HStack justifyContent="space-between" alignItems={"center"}>
             <SettingsItem label="Language" iconName="language" />
-            <Text>English</Text>
+            <BodyTypography isSecondaryText fontSize={"sm"}>English</BodyTypography>
           </HStack>
           <SettingsItem label="Linked Accounts" iconName="link-outline" />
           <SettingsItem
@@ -69,7 +69,7 @@ export const SettingsScreen: FC = () => {
           />
         </GroupedView>
 
-        <Card mx={8}>
+        <Card mt={4} mx={[4, 8]}>
           <HStack justifyContent="space-between"
             alignItems={"center"}
             space={6}
@@ -104,7 +104,7 @@ const SettingsItem: FC<SettingsItem> = memo(
       <HStack my={4}>
         {icon}
         {!!iconName && <Icon name={iconName} isSecondaryColor />}
-        <BodyTypography pl={3}>{label}</BodyTypography>
+        <BodyTypography ml={4}>{label}</BodyTypography>
       </HStack>
     );
   }

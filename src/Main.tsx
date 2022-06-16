@@ -15,52 +15,38 @@ import {
 } from "native-base";
 import { Layout } from "./layout";
 import { GroupedView, ViewContainer } from "./components/view";
-import { RNTesterThemeContext, themes } from "./theme/theme";
+import { AppThemeContext, themes } from "./theme/theme";
 import { SettingsScreen, TrackOrderScreen } from "./screens";
 import { SideBar } from "./screens/components/SideBar";
 import { Button, View } from "react-native";
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StackViewEnum } from "./types";
-
-function HomeScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Details')}
-      />
-    </View>
-  );
-}
-function DetailsScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Settings Screen</Text>
-    </View>
-  );
-}
 
 const Stack = createNativeStackNavigator();
 const stackOptions = {
   headerShown: false,
-}
+};
 
 export const Main: FC = () => {
-    const { colorMode } = useColorMode();
-  
+  const { colorMode } = useColorMode();
+
   return (
-    <RNTesterThemeContext.Provider value={colorMode === 'dark' ? themes.dark : themes.light}>
-    
-    <Stack.Navigator initialRouteName={StackViewEnum.TrackOrder}>
-        <Stack.Screen name={StackViewEnum.Settings}
-         component={SettingsScreen}
-         options={stackOptions} />
-        <Stack.Screen name={StackViewEnum.TrackOrder}
-        component={TrackOrderScreen}
-         options={stackOptions} />
+    <AppThemeContext.Provider
+      value={colorMode === "dark" ? themes.dark : themes.light}
+    >
+      <Stack.Navigator initialRouteName={StackViewEnum.Settings}>
+        <Stack.Screen
+          name={StackViewEnum.Settings}
+          component={SettingsScreen}
+          options={stackOptions}
+        />
+        <Stack.Screen
+          name={StackViewEnum.TrackOrder}
+          component={TrackOrderScreen}
+          options={stackOptions}
+        />
       </Stack.Navigator>
-      
+
       {/* <Layout>
       <Stack w="100%" h="100%" direction={{ base: "column", md: "row" }}>
       <Hidden from="sm" till="lg">
@@ -81,20 +67,17 @@ export const Main: FC = () => {
         </Box>
       </Stack>
     </Layout> */}
-
-    </RNTesterThemeContext.Provider>
+    </AppThemeContext.Provider>
   );
 };
 
 function ToggleDarkMode() {
-    const { colorMode, toggleColorMode } = useColorMode();
-    return (
-      <HStack space={2} alignItems="center">
-        <Text>Dark</Text>
-        <Switch isChecked={colorMode === "light"}
-          onToggle={toggleColorMode}
-        />
-        <Text>Light</Text>
-      </HStack>
-    );
-  }
+  const { colorMode, toggleColorMode } = useColorMode();
+  return (
+    <HStack space={2} alignItems="center">
+      <Text>Dark</Text>
+      <Switch isChecked={colorMode === "light"} onToggle={toggleColorMode} />
+      <Text>Light</Text>
+    </HStack>
+  );
+}

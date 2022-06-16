@@ -1,7 +1,34 @@
 import {createContext} from 'react';
 import {Appearance, ColorValue} from 'react-native';
 
-export const RNTesterLightTheme = {
+export const LightTheme = {
+  LabelColor                      : '#181f2a',
+  SecondaryLabelColor             : '#585e6d',
+  SecondarySystemBackgroundColor  : '#f2efff',
+  SystemBackgroundColor           : '#ffffff',
+  SeparatorColor                  : '#dfe0e6',
+  GroupedBackgroundColor          : '#ffffff',
+  SecondaryGroupedBackgroundColor : '#f0f1f3',
+};
+
+export const DarkTheme = {
+  LabelColor                      : '#f7f8fa',
+  SecondaryLabelColor             : '#8b929f',
+  SecondarySystemBackgroundColor  : '#2a3140',
+  SystemBackgroundColor           : '#0f121d',
+  SeparatorColor                  : '#2a3140',
+  GroupedBackgroundColor          : '#181f2a',
+  SecondaryGroupedBackgroundColor : '#2a3140',
+};
+
+export const themes = {light: LightTheme, dark: DarkTheme};
+export const AppThemeContext = createContext(
+  Appearance.getColorScheme() === 'dark' ? themes.dark : themes.light
+);
+
+
+
+export const RNTesterLightTheme1 = {
   LabelColor                      : '#000000ff',
   SecondaryLabelColor             : '#3c3c4399',
   TertiaryLabelColor              : '#3c3c434c',
@@ -31,7 +58,7 @@ export const RNTesterLightTheme = {
   SystemTealColor                 : '#39796bff'
 };
 
-export const RNTesterDarkTheme = {
+export const RNTesterDarkTheme1 = {
   LabelColor                      : '#ffffffff',
   SecondaryLabelColor             : '#ebebf599',
   TertiaryLabelColor              : '#ebebf54c',
@@ -60,8 +87,3 @@ export const RNTesterDarkTheme = {
   BorderColor                     : '#005dffff',
   SystemTealColor                 : '#00251aff'
 };
-
-export const themes = {light: RNTesterLightTheme, dark: RNTesterDarkTheme};
-export const RNTesterThemeContext = createContext(
-  Appearance.getColorScheme() === 'dark' ? themes.dark : themes.light
-);

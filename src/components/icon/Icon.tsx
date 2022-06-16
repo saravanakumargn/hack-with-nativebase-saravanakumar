@@ -2,7 +2,7 @@ import React, { FC, memo, useContext, useMemo } from "react";
 import {Icon as NBIcon} from "native-base";
 import { Ionicons } from '@expo/vector-icons';
 import { IIconProps, ITextProps, Text } from "native-base";
-import { RNTesterThemeContext } from "../../theme/theme";
+import { AppThemeContext } from "../../theme/theme";
 
 export interface IconProps extends IIconProps {
   isSecondaryColor?: boolean;
@@ -13,7 +13,7 @@ export const Icon: FC<IconProps> = ({
   ...props
 }) => {
 
-  const theme = useContext(RNTesterThemeContext);
+  const theme = useContext(AppThemeContext);
 
   const iconColor = useMemo(() => (
       isSecondaryColor ? theme.SecondaryLabelColor : theme.LabelColor
