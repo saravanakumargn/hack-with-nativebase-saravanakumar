@@ -80,23 +80,17 @@ export const Sidebar: FC = () => {
             janedoe2@mydomain.com
           </BodyTypography>
         </VStack>
-
         <Divider />
         <Flex>
-        {/* <View
-           style={{
-            flex: 1,
-            backgroundColor: '#ff00ff'
-          }}> */}
         <VStack px="6"
           py="8">
         <SidebarListItem label="Contacts" iconName="person" />
         <SidebarListItem label="Groups" iconName="groups"/>
         <SidebarListItem label="Notification" iconName="notifications" />
-        <SidebarListItem label="Order (screen3)" iconName="shopping-bag"
+        <SidebarListItem label="Order (screen-3)" iconName="shopping-bag"
         isSelected={route.name === StackViewEnum.TrackOrder}
         onPress={() => navigation.navigate(StackViewEnum.TrackOrder)} />
-        <SidebarListItem label="Settings (screen1)" iconName="settings"
+        <SidebarListItem label="Settings (screen-1)" iconName="settings"
         isSelected={route.name === StackViewEnum.Settings}
         onPress={() => navigation.navigate(StackViewEnum.Settings)} />
         <SidebarListItem label="Privacy Policies" iconName="privacy-tip" />

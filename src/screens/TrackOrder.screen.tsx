@@ -2,6 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 import {
   Badge,
   Box,
+  Circle,
   Divider,
   HStack,
   Image,
@@ -10,6 +11,7 @@ import {
   VStack,
 } from "native-base";
 import React, { FC, memo, ReactElement, useMemo } from "react";
+import { StyleSheet } from "react-native";
 import { Card } from "../components/card";
 import { Icon } from "../components/icon";
 import { BodyTypography, Text } from "../components/typography";
@@ -107,18 +109,11 @@ const TimeLine: FC<TimeLine> = memo(
     return (
       <HStack opacity={opacity}>
         <Box>
-          <View
+          <Circle
+            size="26px"
             bg="violet.600"
             _dark={{
               backgroundColor: isCompleted ? "violet.600" : "gray.100",
-            }}
-            style={{
-              height: 24,
-              width: 24,
-              borderRadius: 50,
-              display: 1,
-              alignItems: "center",
-              justifyContent: "center",
             }}
           >
             <Icon
@@ -128,7 +123,7 @@ const TimeLine: FC<TimeLine> = memo(
                 color: "gray.900",
               }}
             />
-          </View>
+          </Circle>
           {!isLastItem && (
             <Box alignItems={"center"} flex={1}>
               <View borderColor="violet.600" style={lineStyle} />

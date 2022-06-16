@@ -31,23 +31,28 @@ export interface LayoutProps {
 export const Layout: FC<LayoutProps> = ({ children }) => {
   return (
     <ViewContainer>
+    <Hidden from="base" till="sm">
       <Header />
+          </Hidden>
       <ViewContainer>
-        {/* <View style={styles.container}>{children}</View> */}
         <Stack w="100%" h="100%" direction={{ base: "column", md: "row" }}>
-          {/* <Hidden from="sm" till="lg"> */}
+    <Hidden from="base" till="sm">
           <VStack
-            space={{ base: "6", md: "4" }}
-            flex={{ base: "none", md: 1 }}
-            //   flex={{ base: "6", md: 1 }}
+            // space={{ base: "6", md: "4" }}
+            flex={{ sm: "none", md: 1 }}
+            // flex={{ base: "none", md: 1 }}
             //   p="4"
-            bg="green.500"
+            // bg="green.500"
           >
             <Sidebar />
           </VStack>
-          {/* </Hidden> */}
-          <Box flex={{ base: 1, md: 3 }} bg="blueGray.50">
-            <ViewContainer flex={{ base: 1, md: 3 }} bg="blueGray.50">
+          </Hidden>
+          <Box 
+          flex={{ base: 1, md: 3 }}
+          >
+            <ViewContainer 
+            // flex={{ base: 1, md: 3 }}
+            >
               {/* <SettingsScreen /> */}
               {children}
             </ViewContainer>

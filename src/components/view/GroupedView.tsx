@@ -44,9 +44,9 @@ export const GroupedView: FC<GroupedViewProps> = ({
       )}
     <Box bg={theme.SystemBackgroundColor}
     p={isPadding ? 4 : 0}
-    mx={8}
-    my={4}
-    borderRadius={BORDER_RADIUS}
+    mx={[0, 8]}
+    my={[0, 4]}
+    borderRadius={[0, BORDER_RADIUS]}
      {...props}>
       {children}
     </Box>
