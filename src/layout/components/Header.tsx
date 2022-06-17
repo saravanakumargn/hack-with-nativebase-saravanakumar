@@ -4,9 +4,6 @@ import {
   Heading,
   Text,
   Avatar,
-  useColorMode,
-  Switch,
-  Box,
   useColorModeValue,
 } from "native-base";
 import { ViewContainer } from "../../components/view";
@@ -27,9 +24,6 @@ export const Header: FC = () => {
           </Heading>
         </HStack>
         <HStack mr={4}>
-          <Box mr={3} justifyContent="center">
-            <ToggleDarkMode />
-          </Box>
           <IconButton iconName="share" isSecondaryIcon />
           <IconButton iconName="heart" isSecondaryIcon />
           <IconButton iconName="cart" isSecondaryIcon />
@@ -51,14 +45,3 @@ export const Header: FC = () => {
 };
 
 export default memo(Header);
-
-function ToggleDarkMode() {
-  const { colorMode, toggleColorMode } = useColorMode();
-  return (
-    <HStack space={2} alignItems="center">
-      <Text>Dark</Text>
-      <Switch isChecked={colorMode === "light"} onToggle={toggleColorMode} />
-      <Text>Light</Text>
-    </HStack>
-  );
-}

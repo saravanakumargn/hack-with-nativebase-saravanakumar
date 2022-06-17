@@ -9,6 +9,8 @@ import {
   Pressable,
   Flex,
   useColorModeValue,
+  Box,
+  Switch,
 } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Icon } from "../../components/icon";
@@ -107,13 +109,14 @@ export const Sidebar: FC = () => {
             />
             <SidebarListItem label="Refer and Earn" iconName="share" />
           </VStack>
-
-          {/* <Spacer /> */}
           <VStack>
             <Divider />
-            <VStack px="6" py="8">
+            <VStack px="6" pt="8">
               <SidebarListItem label="Logout" iconName="logout" />
             </VStack>
+          <Box pl="8" py="2">
+            <ToggleDarkMode />
+          </Box>
           </VStack>
         </Flex>
       </ScrollView>
@@ -155,3 +158,16 @@ const SidebarListItem: FC<SidebarListItem> = memo(
     );
   }
 );
+
+
+function ToggleDarkMode() {
+  const { colorMode, toggleColorMode } = useColorMode();
+  return (
+    <HStack space={2} alignItems="center">
+      <BodyTypography fontSize={"sm"}>Dark</BodyTypography>
+      <Switch isChecked={colorMode === "light"} onToggle={toggleColorMode} />
+      <BodyTypography fontSize={"sm"}>Light</BodyTypography>
+    </HStack>
+  );
+}
+

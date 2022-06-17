@@ -12,7 +12,7 @@ const stackOptions = {
 
 export const Main: FC = () => {
   return (
-    <Stack.Navigator initialRouteName={StackViewEnum.Portfolio}>
+    <Stack.Navigator initialRouteName={StackViewEnum.Settings}>
       <Stack.Screen
         name={StackViewEnum.Settings}
         component={SettingsScreen}
