@@ -1,10 +1,8 @@
-import React, { FC, memo, ReactElement, useContext, useMemo } from "react";
+import React, { FC, memo, ReactElement, useMemo } from "react";
 import {
   VStack,
   HStack,
-  Text,
   useColorMode,
-  Switch,
   Avatar,
   Divider,
   ScrollView,

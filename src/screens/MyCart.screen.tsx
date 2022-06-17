@@ -1,4 +1,4 @@
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation } from '@react-navigation/native';
 import {
   Box,
   Button,
@@ -11,19 +11,14 @@ import {
   Spacer,
   useColorModeValue,
   VStack,
-} from "native-base";
-import React, {
-  FC,
-  memo,
-  useCallback,
-  useState,
-} from "react";
-import { BodyTypography } from "../components/typography";
-import { GroupedView, ViewContainer } from "../components/view";
-import { Layout } from "../layout";
-import { Card } from "../components/card";
-import { BORDER_RADIUS } from "../utils";
-import { DarkTheme, LightTheme } from "../theme/theme";
+} from 'native-base';
+import React, { FC, memo, useCallback, useState } from 'react';
+import { BodyTypography } from '../components/typography';
+import { GroupedView, ViewContainer } from '../components/view';
+import { Layout } from '../layout';
+import { Card } from '../components/card';
+import { BORDER_RADIUS } from '../utils';
+import { DarkTheme, LightTheme } from '../theme/theme';
 
 type ProductItem = {
   image: string;
@@ -35,7 +30,7 @@ type ProductItem = {
 export const MyCartScreen: FC = () => {
   const navigation = useNavigation();
   const [isShowCartModal, setShowCartModal] = useState(true);
-  const [value, setValue] = useState("one");
+  const [value, setValue] = useState('one');
 
   const toggleCartModal = useCallback(() => {
     setShowCartModal((prevState) => !prevState);
@@ -47,13 +42,12 @@ export const MyCartScreen: FC = () => {
         <GroupedView
           headerLabel="My Cart"
           headerIconName="arrow-back"
-          flexGrow={["unset", 1]}
+          flexGrow={['unset', 1]}
           onClickHeader={function () {
             navigation.goBack();
-          }}
-        >
-          <Box alignItems={"center"}>
-            <VStack width={["98%", "80%"]}>
+          }}>
+          <Box alignItems={'center'}>
+            <VStack width={['98%', '80%']}>
               <ProductItem
                 title="BEDLAMP"
                 desc="Size: Small"
@@ -74,12 +68,8 @@ export const MyCartScreen: FC = () => {
               <Summary title="Shipping" details="Free" />
               <Divider my={3} />
               <HStack justifyContent="space-between" my={2}>
-                <BodyTypography fontWeight={"bold"}>
-                  Total Amount
-                </BodyTypography>
-                <BodyTypography fontWeight={"bold"}>
-                  &#8377; 3340.00
-                </BodyTypography>
+                <BodyTypography fontWeight={'bold'}>Total Amount</BodyTypography>
+                <BodyTypography fontWeight={'bold'}>&#8377; 3340.00</BodyTypography>
               </HStack>
               <Button my="4" onPress={toggleCartModal}>
                 PLACE ORDER (Click for Modal screen)
@@ -88,111 +78,87 @@ export const MyCartScreen: FC = () => {
           </Box>
         </GroupedView>
         {isShowCartModal && (
-        <Modal isOpen
-          onClose={toggleCartModal}>
-          <Modal.Content
-            marginBottom={[0, "auto"]}
-            borderBottomRadius={[0, 'xl']}
-            marginTop={"auto"}
-            width="100%">
-            <Modal.Body>
-              <HStack>
-                <Image
-                  source={{
-                    uri: "https://i.pravatar.cc/150?img=41",
-                  }}
-                  alt="Alternate Text"
-                  size="lg"
-                  borderRadius={BORDER_RADIUS}
-                />
-                <VStack ml={4}>
-                  <ModalText
-                    fontSize={"md"}
-                    fontWeight={"bold"}
-                    label="Body Suit"
+          <Modal isOpen onClose={toggleCartModal}>
+            <Modal.Content
+              marginBottom={[0, 'auto']}
+              borderBottomRadius={[0, 'xl']}
+              marginTop={'auto'}
+              width="100%">
+              <Modal.Body>
+                <HStack>
+                  <Image
+                    source={{
+                      uri: 'https://i.pravatar.cc/150?img=41',
+                    }}
+                    alt="Alternate Text"
+                    size="lg"
+                    borderRadius={BORDER_RADIUS}
                   />
-                  <ModalText
-                    isSecondaryText
-                    fontSize={"sm"}
-                    mt={"0.5"}
-                    label="Mother Care"
-                  />
-                  <Spacer />
-                  <ModalText fontSize={"md"} label="&#8377; 500" />
-                </VStack>
-              </HStack>
+                  <VStack ml={4}>
+                    <ModalText fontSize={'md'} fontWeight={'bold'} label="Body Suit" />
+                    <ModalText isSecondaryText fontSize={'sm'} mt={'0.5'} label="Mother Care" />
+                    <Spacer />
+                    <ModalText fontSize={'md'} label="&#8377; 500" />
+                  </VStack>
+                </HStack>
 
-              <VStack my={4}>
-                <ModalText
-                  label="Choose a delivery option"
-                  fontWeight={"bold"}
-                  my={3}
-                />
-                <Radio.Group
-                  name="myRadioGroup"
-                  accessibilityLabel="favorite number"
-                  value={value}
-                  onChange={(nextValue) => {
-                    setValue(nextValue);
-                  }}
-                >
-                  <Radio value="one" my={2}>
-                    <HStack>
-                      <BodyTypography
-                        fontSize={"md"}
-                        color={useColorModeValue("violet.800", "violet.600")}
-                      >
-                        Monday
-                      </BodyTypography>
-                      <ModalText fontSize={"md"} label=" - Free Delivery" />
-                    </HStack>
-                  </Radio>
-                  <Radio value="two" my={2}>
-                    <HStack>
-                      <BodyTypography
-                        fontSize={"md"}
-                        color={useColorModeValue("violet.800", "violet.600")}
-                      >
-                        Tuesday
-                      </BodyTypography>
-                      <ModalText
-                        fontSize={"md"}
-                        label=" - Delivery Fee &#8377;50"
-                      />
-                    </HStack>
-                  </Radio>
-                  <Radio value="three" my={2}>
-                    <HStack>
-                      <BodyTypography
-                        fontSize={"md"}
-                        color={useColorModeValue("violet.800", "violet.600")}
-                      >
-                        2 Business Days
-                      </BodyTypography>
-                      <ModalText
-                        fontSize={"md"}
-                        label=" - Delivery Fee &#8377;150"
-                      />
-                    </HStack>
-                  </Radio>
-                  <Radio value="four" my={2}>
-                    <HStack>
-                      <BodyTypography
-                        fontSize={"md"}
-                        color={useColorModeValue("violet.800", "violet.600")}>
-                        Pickup
-                      </BodyTypography>
-                      <ModalText fontSize={"md"} label=" Find a Location" />
-                    </HStack>
-                  </Radio>
-                </Radio.Group>
-                <Button mt={6} onPress={toggleCartModal}>
-                  CONTINUE
-                </Button>
-              </VStack>
-            </Modal.Body>
-          </Modal.Content>
-        </Modal>
+                <VStack my={4}>
+                  <ModalText label="Choose a delivery option" fontWeight={'bold'} my={3} />
+                  <Radio.Group
+                    name="myRadioGroup"
+                    accessibilityLabel="favorite number"
+                    value={value}
+                    onChange={(nextValue) => {
+                      setValue(nextValue);
+                    }}>
+                    <Radio value="one" my={2}>
+                      <HStack>
+                        <BodyTypography
+                          fontSize={'md'}
+                          color={useColorModeValue('violet.800', 'violet.600')}>
+                          Monday
+                        </BodyTypography>
+                        <ModalText fontSize={'md'} label=" - Free Delivery" />
+                      </HStack>
+                    </Radio>
+                    <Radio value="two" my={2}>
+                      <HStack>
+                        <BodyTypography
+                          fontSize={'md'}
+                          color={useColorModeValue('violet.800', 'violet.600')}>
+                          Tuesday
+                        </BodyTypography>
+                        <ModalText fontSize={'md'} label=" - Delivery Fee &#8377;50" />
+                      </HStack>
+                    </Radio>
+                    <Radio value="three" my={2}>
+                      <HStack>
+                        <BodyTypography
+                          fontSize={'md'}
+                          color={useColorModeValue('violet.800', 'violet.600')}>
+                          2 Business Days
+                        </BodyTypography>
+                        <ModalText fontSize={'md'} label=" - Delivery Fee &#8377;150" />
+                      </HStack>
+                    </Radio>
+                    <Radio value="four" my={2}>
+                      <HStack>
+                        <BodyTypography
+                          fontSize={'md'}
+                          color={useColorModeValue('violet.800', 'violet.600')}>
+                          Pickup
+                        </BodyTypography>
+                        <ModalText fontSize={'md'} label=" Find a Location" />
+                      </HStack>
+                    </Radio>
+                  </Radio.Group>
+                  <Button mt={6} onPress={toggleCartModal}>
+                    CONTINUE
+                  </Button>
+                </VStack>
+              </Modal.Body>
+            </Modal.Content>
+          </Modal>
         )}
       </ViewContainer>
     </Layout>
@@ -202,7 +168,7 @@ export const MyCartScreen: FC = () => {
 const ProductItem: FC<ProductItem> = memo(({ image, title, desc, price }) => {
   return (
     <Card isSecondaryBackground mt={4}>
-      <HStack justifyContent="space-between" alignItems={"center"}>
+      <HStack justifyContent="space-between" alignItems={'center'}>
         <HStack>
           <Image
             source={{
@@ -213,12 +179,12 @@ const ProductItem: FC<ProductItem> = memo(({ image, title, desc, price }) => {
             borderRadius={BORDER_RADIUS}
           />
           <VStack ml={4}>
-            <BodyTypography fontSize={"md"}>{title}</BodyTypography>
-            <BodyTypography isSecondaryText fontSize={"sm"} mt={"0.5"}>
+            <BodyTypography fontSize={'md'}>{title}</BodyTypography>
+            <BodyTypography isSecondaryText fontSize={'sm'} mt={'0.5'}>
               {desc}
             </BodyTypography>
             <Spacer />
-            <BodyTypography fontSize={"md"}>{price}</BodyTypography>
+            <BodyTypography fontSize={'md'}>{price}</BodyTypography>
           </VStack>
         </HStack>
         <Stepper />
@@ -230,9 +196,9 @@ const ProductItem: FC<ProductItem> = memo(({ image, title, desc, price }) => {
 const Stepper: FC = memo(() => {
   return (
     <HStack>
-      <Button size={"xs"}>-</Button>
+      <Button size={'xs'}>-</Button>
       <Center w={25}>1</Center>
-      <Button size={"xs"}>+</Button>
+      <Button size={'xs'}>+</Button>
     </HStack>
   );
 });
@@ -243,8 +209,7 @@ const ModalText: FC<{
   return (
     <BodyTypography
       color={useColorModeValue(LightTheme.LabelColor, DarkTheme.LabelColor)}
-      {...props}
-    >
+      {...props}>
       {label}
     </BodyTypography>
   );
@@ -256,27 +221,27 @@ const Summary: FC<{
 }> = memo(({ title, details }) => {
   return (
     <HStack justifyContent="space-between" my={2}>
-      <BodyTypography fontSize={"sm"}>{title}</BodyTypography>
-      <BodyTypography fontSize={"sm"}>{details}</BodyTypography>
+      <BodyTypography fontSize={'sm'}>{title}</BodyTypography>
+      <BodyTypography fontSize={'sm'}>{details}</BodyTypography>
     </HStack>
   );
 });
 
 const styles = {
   top: {
-    marginBottom: "auto",
+    marginBottom: 'auto',
     marginTop: 0,
   },
   bottom: {
     marginBottom: 0,
-    marginTop: "auto",
+    marginTop: 'auto',
   },
   left: {
     marginLeft: 0,
-    marginRight: "auto",
+    marginRight: 'auto',
   },
   right: {
-    marginLeft: "auto",
+    marginLeft: 'auto',
     marginRight: 0,
   },
   center: {},

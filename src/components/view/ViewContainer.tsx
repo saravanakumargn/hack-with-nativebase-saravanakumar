@@ -1,4 +1,4 @@
-import React, { FC, memo, ReactNode, useContext, useMemo } from "react";
+import React, { FC, memo, ReactNode, useMemo } from "react";
 import { Box, IBoxProps, useColorMode, useColorModeValue } from "native-base";
 import { DarkTheme, LightTheme } from "../../theme/theme";
 

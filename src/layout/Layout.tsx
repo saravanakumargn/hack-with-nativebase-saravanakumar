@@ -1,7 +1,7 @@
-import React, { FC, ReactChild } from "react";
-import { VStack, Box, Stack, Hidden } from "native-base";
-import { Header, Sidebar } from "./components";
-import ViewContainer from "../components/view/ViewContainer";
+import React, { FC, ReactChild } from 'react';
+import { VStack, Box, Stack, Hidden } from 'native-base';
+import { Header, Sidebar } from './components';
+import ViewContainer from '../components/view/ViewContainer';
 
 export interface LayoutProps {
   children: ReactChild;
@@ -14,9 +14,9 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
         <Header />
       </Hidden>
       <ViewContainer>
-        <Stack w="100%" h="100%" direction={{ base: "column", md: "row" }}>
+        <Stack w="100%" h="100%" direction={{ base: 'column', md: 'row' }}>
           <Hidden from="base" till="sm">
-            <VStack flex={{ sm: "none", md: 1 }}>
+            <VStack flex={{ sm: 'none', md: 1 }}>
               <Sidebar />
             </VStack>
           </Hidden>
