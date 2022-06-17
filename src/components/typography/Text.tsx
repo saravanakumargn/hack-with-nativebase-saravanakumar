@@ -13,7 +13,6 @@ export const Text: FC<TextProps> = ({
   ...props
 }) => {
   const {colorMode} = useColorMode();
-
   const textColor = useMemo(
     () => (isSecondaryText 
       ? useColorModeValue(LightTheme.SecondaryLabelColor, DarkTheme.SecondaryLabelColor) 

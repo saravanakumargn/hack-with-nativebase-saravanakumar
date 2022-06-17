@@ -11,14 +11,17 @@ import {
 } from "native-base";
 import { ViewContainer } from "../../components/view";
 import { IconButton } from "../../components/button";
+import { StackViewEnum } from "../../types";
+import { useNavigation } from "@react-navigation/native";
 
 export const Header: FC = () => {
+  const navigation = useNavigation();
   return (
     <ViewContainer flex={"none"}>
       <HStack px="3" py="3" justifyContent="space-between" alignItems="center">
         <HStack alignItems="center" mx={2}>
           <IconButton iconName="menu" />
-          <Heading>
+          <Heading onPress={() => navigation.navigate(StackViewEnum.Settings)}>
             <Text color={useColorModeValue("violet.800", "violet.600")}>HackWith</Text>
             NativeBase
           </Heading>

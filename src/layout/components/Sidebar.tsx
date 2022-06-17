@@ -95,7 +95,12 @@ export const Sidebar: FC = () => {
               isSelected={route.name === StackViewEnum.Settings}
               onPress={() => navigation.navigate(StackViewEnum.Settings)}
             />
-            <SidebarListItem label="Privacy Policies" iconName="privacy-tip" />
+            <SidebarListItem
+              label="Portfolio (screen-4)"
+              iconName="privacy-tip"
+              isSelected={route.name === StackViewEnum.Portfolio}
+              onPress={() => navigation.navigate(StackViewEnum.Portfolio)}
+            />
             <SidebarListItem
               label="Help and Support"
               iconName="support-agent"
