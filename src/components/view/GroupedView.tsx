@@ -5,11 +5,14 @@ import {
   HStack,
   IBoxProps,
   useColorModeValue,
+  useMediaQuery,
 } from "native-base";
 import { DarkTheme, LightTheme } from "../../theme/theme";
 import { BORDER_RADIUS } from "../../utils";
 import { Text } from "../typography";
 import { IconButton } from "../button";
+import { useNavigation } from "@react-navigation/native";
+import { Icon } from "../icon";
 
 export interface GroupedViewProps extends IBoxProps {
   children: ReactNode;
@@ -29,9 +32,40 @@ export const GroupedView: FC<GroupedViewProps> = ({
   isPadding = true,
   ...props
 }) => {
+  const navigation = useNavigation();
+
+  const [isSmallScreen] = useMediaQuery({
+    maxWidth: 480
+  });
+
+  navigation.setOptions({
+    title : headerLabel,
+    headerShown : isSmallScreen,
+    headerStyle: {
+      backgroundColor: useColorModeValue("#5b21b6", DarkTheme.SystemBackgroundColor),
+    },
+    headerTintColor: '#FFFFFF',
+    headerShadowVisible: false,
+    headerLeft : () => {
+      return (
+        <Box ml={4}>
+          <Icon name="arrow-back"
+          onPress={() => navigation.goBack()}
+          color={[
+            "lightText",
+            useColorModeValue(
+              LightTheme.LabelColor,
+              DarkTheme.LabelColor
+            ),
+          ]} />
+        </Box>
+      );
+    }
+  });
+
   return (
     <>
-      {(!!headerIconName || !!headerLabel) && (
+      {!isSmallScreen && (!!headerIconName || !!headerLabel) && (
         <HStack
           alignItems="center"
           bg={[
