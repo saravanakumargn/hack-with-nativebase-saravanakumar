@@ -1,6 +1,6 @@
-import React, { FC, memo, ReactNode, useContext, useMemo } from "react";
-import { Box, IBoxProps } from "native-base";
-import { AppThemeContext } from "../../theme/theme";
+import React, { FC, memo, ReactNode, useMemo } from "react";
+import { Box, IBoxProps, useColorMode, useColorModeValue } from "native-base";
+import { DarkTheme, LightTheme } from "../../theme/theme";
 import { BORDER_RADIUS } from "../../utils";
 
 export interface CardProps extends IBoxProps {
@@ -13,14 +13,12 @@ export const Card: FC<CardProps> = ({
   isSecondaryBackground = false,
   ...props
 }) => {
-  const theme = useContext(AppThemeContext);
-
+  const {colorMode} = useColorMode();
   const backgroundColor = useMemo(
-    () =>
-      isSecondaryBackground
-        ? theme.SecondaryGroupedBackgroundColor
-        : theme.GroupedBackgroundColor,
-    [isSecondaryBackground, theme]
+    () => (isSecondaryBackground 
+      ? useColorModeValue(LightTheme.SecondaryGroupedBackgroundColor, DarkTheme.SecondaryGroupedBackgroundColor) 
+      : useColorModeValue(LightTheme.GroupedBackgroundColor, DarkTheme.GroupedBackgroundColor)),
+    [isSecondaryBackground, colorMode]
   );
 
   return (

@@ -1,7 +1,7 @@
-import React, { FC, memo, useContext, useMemo } from "react";
-import {IconButton as NBIconButton,IIconButtonProps} from "native-base";
+import React, { FC, memo, useMemo } from "react";
+import {IconButton as NBIconButton,IIconButtonProps, useColorMode, useColorModeValue} from "native-base";
 import { Icon } from "../icon";
-import { AppThemeContext } from "../../theme/theme";
+import { DarkTheme, LightTheme } from "../../theme/theme";
 import { ThemeComponentSizeType } from "native-base/lib/typescript/components/types";
 
 export interface IconButtonProps extends IIconButtonProps {
@@ -16,11 +16,13 @@ export const IconButton: FC<IconButtonProps> = ({
   iconSize = "lg",
   ...props
 }) => {
-  const theme = useContext(AppThemeContext);
+  const {colorMode} = useColorMode();
 
   const iconColor = useMemo(
-    () => (isSecondaryIcon ? theme.SecondaryLabelColor : theme.LabelColor),
-    [isSecondaryIcon, theme]
+    () => (isSecondaryIcon 
+      ? useColorModeValue(LightTheme.SecondaryLabelColor, DarkTheme.SecondaryLabelColor) 
+      : useColorModeValue(LightTheme.LabelColor, DarkTheme.LabelColor)),
+    [isSecondaryIcon, colorMode]
   );
 
   return (

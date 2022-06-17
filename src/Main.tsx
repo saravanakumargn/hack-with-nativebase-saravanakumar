@@ -1,6 +1,4 @@
 import React, { FC } from "react";
-import {useColorMode} from "native-base";
-import { AppThemeContext, themes } from "./theme/theme";
 import { SettingsScreen, TrackOrderScreen } from "./screens";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StackViewEnum } from "./types";
@@ -12,12 +10,9 @@ const stackOptions = {
 };
 
 export const Main: FC = () => {
-  const { colorMode } = useColorMode();
 
   return (
-    <AppThemeContext.Provider
-      value={colorMode === "dark" ? themes.dark : themes.light}>
-      <Stack.Navigator initialRouteName={StackViewEnum.Settings}>
+      <Stack.Navigator initialRouteName={StackViewEnum.MyCart}>
         <Stack.Screen
           name={StackViewEnum.Settings}
           component={SettingsScreen}
@@ -34,6 +29,5 @@ export const Main: FC = () => {
           options={stackOptions}
         />
       </Stack.Navigator>
-    </AppThemeContext.Provider>
   );
 };

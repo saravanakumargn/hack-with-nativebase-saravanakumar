@@ -1,6 +1,3 @@
-import {createContext} from 'react';
-import {Appearance} from 'react-native';
-
 export const DarkTheme = {
   LabelColor                      : '#f7f8fa',
   SecondaryLabelColor             : '#8b929f',
@@ -20,8 +17,3 @@ export const LightTheme = {
   GroupedBackgroundColor          : '#ffffff',
   SecondaryGroupedBackgroundColor : '#f0f1f3',
 };
-
-export const themes = {light: LightTheme, dark: DarkTheme};
-export const AppThemeContext = createContext(
-  Appearance.getColorScheme() === 'dark' ? themes.dark : themes.light
-);

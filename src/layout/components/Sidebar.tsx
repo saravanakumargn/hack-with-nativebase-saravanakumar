@@ -10,6 +10,7 @@ import {
   ScrollView,
   Pressable,
   Flex,
+  useColorModeValue,
 } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Icon } from "../../components/icon";
@@ -18,7 +19,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { StackViewEnum } from "../../types";
 import { BodyTypography } from "../../components/typography";
 import { IconButton } from "../../components/button";
-import { AppThemeContext } from "../../theme/theme";
+import { DarkTheme, LightTheme } from "../../theme/theme";
 import { BORDER_RADIUS } from "../../utils";
 
 type SidebarListItem = {
@@ -32,11 +33,9 @@ type SidebarListItem = {
 export const Sidebar: FC = () => {
   const navigation = useNavigation();
   const route = useRoute();
-  const theme = useContext(AppThemeContext);
-  console.log(route.name);
   return (
     <ViewContainer
-      borderColor={theme.SeparatorColor}
+      borderColor={useColorModeValue(LightTheme.SeparatorColor, DarkTheme.SeparatorColor)}
       borderRightWidth={0.5}
       borderTopWidth={0.5}
     >
@@ -114,7 +113,6 @@ export const Sidebar: FC = () => {
             </VStack>
           </VStack>
         </Flex>
-        <ToggleDarkMode />
       </ScrollView>
     </ViewContainer>
   );
@@ -122,26 +120,15 @@ export const Sidebar: FC = () => {
 
 export default memo(Sidebar);
 
-function ToggleDarkMode() {
-  const { colorMode, toggleColorMode } = useColorMode();
-  return (
-    <HStack space={2} alignItems="center">
-      <Text>Dark</Text>
-      <Switch isChecked={colorMode === "light"} onToggle={toggleColorMode} />
-      <Text>Light</Text>
-    </HStack>
-  );
-}
-
 const SidebarListItem: FC<SidebarListItem> = memo(
   ({ icon, iconName, label, onPress, isSelected }) => {
-    const theme = useContext(AppThemeContext);
+    const {colorMode} = useColorMode();
     const bgColor = useMemo(() => {
       if (isSelected) {
-        return theme.SecondarySystemBackgroundColor;
+        return useColorModeValue(LightTheme.SecondarySystemBackgroundColor, DarkTheme.SecondarySystemBackgroundColor);
       }
       return "transparent";
-    }, [theme, isSelected]);
+    }, [colorMode, isSelected]);
 
     const selectedColor = useMemo(() => {
       if (!isSelected) {

@@ -1,19 +1,21 @@
-import React, { FC, memo, useContext, useMemo } from "react";
-import { Icon as NBIcon } from "native-base";
+import React, { FC, memo, useMemo } from "react";
+import { Icon as NBIcon, useColorMode, useColorModeValue } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 import { IIconProps } from "native-base";
-import { AppThemeContext } from "../../theme/theme";
+import { DarkTheme, LightTheme } from "../../theme/theme";
 
 export interface IconProps extends IIconProps {
   isSecondaryColor?: boolean;
 }
 
 export const Icon: FC<IconProps> = ({ isSecondaryColor, ...props }) => {
-  const theme = useContext(AppThemeContext);
+  const {colorMode} = useColorMode();
 
   const iconColor = useMemo(
-    () => (isSecondaryColor ? theme.SecondaryLabelColor : theme.LabelColor),
-    [isSecondaryColor, theme]
+    () => (isSecondaryColor 
+      ? useColorModeValue(LightTheme.SecondaryLabelColor, DarkTheme.SecondaryLabelColor) 
+      : useColorModeValue(LightTheme.LabelColor, DarkTheme.LabelColor)),
+    [isSecondaryColor, colorMode]
   );
 
   return <NBIcon size="lg" as={Ionicons} color={iconColor} {...props} />;

@@ -1,4 +1,4 @@
-import React, { FC, memo, ReactNode, useContext, useMemo } from "react";
+import React, { FC, memo, ReactNode } from "react";
 import {
   Box,
   Heading,
@@ -6,7 +6,7 @@ import {
   IBoxProps,
   useColorModeValue,
 } from "native-base";
-import { AppThemeContext, DarkTheme, LightTheme } from "../../theme/theme";
+import { DarkTheme, LightTheme } from "../../theme/theme";
 import { BORDER_RADIUS } from "../../utils";
 import { Text } from "../typography";
 import { IconButton } from "../button";
@@ -29,8 +29,6 @@ export const GroupedView: FC<GroupedViewProps> = ({
   isPadding = true,
   ...props
 }) => {
-  const theme = useContext(AppThemeContext);
-
   return (
     <>
       {(!!headerIconName || !!headerLabel) && (
@@ -67,7 +65,7 @@ export const GroupedView: FC<GroupedViewProps> = ({
         </HStack>
       )}
       <Box
-        bg={theme.GroupedBackgroundColor}
+        bg={useColorModeValue(LightTheme.GroupedBackgroundColor, DarkTheme.GroupedBackgroundColor)}
         p={isPadding ? 4 : 0}
         mx={[0, 8]}
         my={[0, 4]}

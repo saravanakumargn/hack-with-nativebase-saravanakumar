@@ -87,14 +87,14 @@ export const MyCartScreen: FC = () => {
             </VStack>
           </Box>
         </GroupedView>
-        <Modal
-          isOpen={isShowCartModal}
-          onClose={toggleCartModal}
-        >
+        {isShowCartModal && (
+        <Modal isOpen
+          onClose={toggleCartModal}>
           <Modal.Content
             marginBottom={[0, "auto"]}
-            width="100%"
-            marginTop={"auto"}>
+            borderBottomRadius={[0, 'xl']}
+            marginTop={"auto"}
+            width="100%">
             <Modal.Body>
               <HStack>
                 <Image
@@ -140,9 +140,7 @@ export const MyCartScreen: FC = () => {
                     <HStack>
                       <BodyTypography
                         fontSize={"md"}
-                        _light={{
-                          color: useColorModeValue("violet.800", "violet.800"),
-                        }}
+                        color={useColorModeValue("violet.800", "violet.600")}
                       >
                         Monday
                       </BodyTypography>
@@ -153,9 +151,7 @@ export const MyCartScreen: FC = () => {
                     <HStack>
                       <BodyTypography
                         fontSize={"md"}
-                        _light={{
-                          color: useColorModeValue("violet.800", "violet.800"),
-                        }}
+                        color={useColorModeValue("violet.800", "violet.600")}
                       >
                         Tuesday
                       </BodyTypography>
@@ -169,9 +165,7 @@ export const MyCartScreen: FC = () => {
                     <HStack>
                       <BodyTypography
                         fontSize={"md"}
-                        _light={{
-                          color: useColorModeValue("violet.800", "violet.800"),
-                        }}
+                        color={useColorModeValue("violet.800", "violet.600")}
                       >
                         2 Business Days
                       </BodyTypography>
@@ -185,10 +179,7 @@ export const MyCartScreen: FC = () => {
                     <HStack>
                       <BodyTypography
                         fontSize={"md"}
-                        _light={{
-                          color: useColorModeValue("violet.800", "violet.800"),
-                        }}
-                      >
+                        color={useColorModeValue("violet.800", "violet.600")}>
                         Pickup
                       </BodyTypography>
                       <ModalText fontSize={"md"} label=" Find a Location" />
@@ -202,6 +193,7 @@ export const MyCartScreen: FC = () => {
             </Modal.Body>
           </Modal.Content>
         </Modal>
+        )}
       </ViewContainer>
     </Layout>
   );
@@ -250,9 +242,7 @@ const ModalText: FC<{
 }> = memo(({ label, ...props }) => {
   return (
     <BodyTypography
-      _light={{
-        color: useColorModeValue(LightTheme.LabelColor, DarkTheme.LabelColor),
-      }}
+      color={useColorModeValue(LightTheme.LabelColor, DarkTheme.LabelColor)}
       {...props}
     >
       {label}

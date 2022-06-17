@@ -15,6 +15,11 @@ export default function App() {
           colorScheme: "violet",
         },
       },
+      Switch: {
+        defaultProps: {
+          colorScheme: "violet",
+        },
+      },
       Progress: {
         defaultProps: {
           colorScheme: "violet",
@@ -23,6 +28,7 @@ export default function App() {
     },
     config: {
       initialColorMode: "light",
+      // initialColorMode: "dark",
     },
   });
 
